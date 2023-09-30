@@ -22,7 +22,7 @@ title: Your awesome Password Generator
 #email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   This is a profile project for TypeScript and React.
-  The page is hosted on GitHub Pages, using Ruby,, Jekylls, and GitHub Actions.
+  The page is hosted on GitHub Pages, using Ruby, Jekyll, and GitHub Actions.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 #twitter_username: jekyllrb
