@@ -6,8 +6,11 @@
 	"image": "mcr.microsoft.com/devcontainers/typescript-node",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
-
+	"features": {
+		"ghcr.io/devcontainers/features/ruby:1": {},
+		"./jekyll":{}
+	},
+	
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
