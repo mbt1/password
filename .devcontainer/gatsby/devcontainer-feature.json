@@ -1,0 +1,10 @@
+{
+    "id": "gatsby",
+    "version": "1.0.0",
+    "name": "Gatsby",
+    "description": "Installs gatsby along with needed dependencies.",
+    "options": {
+        },
+    "installsAfter": [
+    ]
+}
