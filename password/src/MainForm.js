@@ -1,31 +1,55 @@
 import React from "react";
 
+function newPassword(passwordOptions){
+    const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz'
+    const numberChars = '0123456789'
+    const myChars = (
+        (passwordOptions.uppercase?uppercaseChars:"")+
+        (passwordOptions.lowercase?lowercaseChars:"")+
+        numberChars
+    );
+    const myCharsLength = myChars.length;
+    console.log(myCharsLength, myChars)
+    let pwd = ""
+    for(let i=0;i<passwordOptions.length;i++){
+        pwd+=myChars.charAt(Math.floor(Math.random()*myCharsLength))
+    }
+    return pwd;
+}
+
 export default function MainForm(){
     const initialState = {
         length:20,
         lowercase:true,
         uppercase:true,
     }
-    let [values,recordChange]=React.useState(initialState)
+    let [passwordOptions,recordChange]=React.useState(initialState)
+    let [pwd,recordNewPassword]=React.useState(newPassword(passwordOptions))
+
     const onChange = (e)=>{
-        recordChange(pv=>({...pv,lowercase:!pv.lowercase}))
+        console.log(e.target.name, e.target.value, e.target.checked)
+        recordChange(ppo=>({...ppo,[e.target.name]:(e.target.type==="checkbox")?e.target.checked:e.target.value}))
+        recordNewPassword(newPassword(passwordOptions))
     }
 
     return(
-        <section className="MainForm">
-            <textarea id="MainForm--PasswordOutput" readOnly="true"/>
-            <span>
-                <input type="text" id="MainForm--Length" name="length" value="20" />
-                <label htmlFor="MainForm--Length">Password Length</label>
-            </span>
-            <span>
-                <input type="checkbox" id="MainForm--lowercase" name="lowercase" checked={values.lowercase} />
-                <label htmlFor="MainForm--lowercase">Include Lowercase Letters</label>
-            </span>
-            <span>
-                <input type="checkbox" id="MainForm--uppercase" name="uppercase" checked={true} onChange={onChange}/>
-                <label htmlFor="MainForm--uppercase">Include Uppercase Letters</label>
-            </span>
+        <section className="MainForm"  onChange={onChange}>
+            <textarea id="MainForm--PasswordOutput" readOnly="true" value={pwd}/>
+            <section className="MainForm--Options">
+                <span>
+                    <input type="text" id="MainForm--Length" name="length" value={passwordOptions.length} />
+                    <label htmlFor="MainForm--Length">Password Length</label>
+                </span>
+                <span>
+                    <input type="checkbox" id="MainForm--lowercase" name="lowercase" checked={passwordOptions.lowercase} />
+                    <label htmlFor="MainForm--lowercase">Include Lowercase Letters</label>
+                </span>
+                <span>
+                    <input type="checkbox" id="MainForm--uppercase" name="uppercase" checked={passwordOptions.uppercase}/>
+                    <label htmlFor="MainForm--uppercase">Include Uppercase Letters</label>
+                </span>
+            </section>
         </section>
     );
 }

@@ -49,14 +49,36 @@
 
 .MainForm{
   margin: 0px auto;
+  padding: 10px;
   padding-top: 30px;
   max-width: 900px;
   height: 100%;
   background-color: #DDDDDD;
   font-size: 1.5em;
   display: grid;
+  grid-template-columns: 1fr;
+}
+.MainForm--Options{
+  text-align: left;
 }
 
+.MainForm span{
+  margin: 10px 0;
+  border: 1px dotted magenta;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 10px;
+  align-content: flex-end;
+}
+/* .MainForm span :nth-child(1){ */
+.MainForm span *{
+    background-color: brown;
+}
+#MainForm--Length{
+  width:100px;
+  text-align: center;
+}
 #MainForm--PasswordOutput{
-  width:80%;
+  width:99%;
+  margin: 0 auto;
 }
