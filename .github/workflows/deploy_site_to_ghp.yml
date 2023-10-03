@@ -39,7 +39,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: CopySource
-        run: cp -r ${{ env.sourcePath }}/{.,}* ${{ github.workspace }}
+        run: cp -r ${{ env.sourcePath }}/* ${{ github.workspace }}
       - name: Detect package manager
         id: detect-package-manager
         run: |
