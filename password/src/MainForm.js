@@ -7,7 +7,8 @@ function newPassword(passwordOptions){
     const myChars = (
         (passwordOptions.uppercase?uppercaseChars:"")+
         (passwordOptions.lowercase?lowercaseChars:"")+
-        numberChars
+        (passwordOptions.number?numberChars:"")+
+        ""
     );
     const myCharsLength = myChars.length;
     console.log(myCharsLength, myChars)
@@ -26,11 +27,11 @@ export default function MainForm(){
     }
     let [passwordOptions,recordChange]=React.useState(initialState)
     let [pwd,recordNewPassword]=React.useState(newPassword(passwordOptions))
+    React.useEffect(()=>{recordNewPassword(newPassword(passwordOptions))},[passwordOptions]);
 
     const onChange = (e)=>{
         console.log(e.target.name, e.target.value, e.target.checked)
         recordChange(ppo=>({...ppo,[e.target.name]:(e.target.type==="checkbox")?e.target.checked:e.target.value}))
-        recordNewPassword(newPassword(passwordOptions))
     }
 
     return(
@@ -48,6 +49,10 @@ export default function MainForm(){
                 <span>
                     <input type="checkbox" id="MainForm--uppercase" name="uppercase" checked={passwordOptions.uppercase}/>
                     <label htmlFor="MainForm--uppercase">Include Uppercase Letters</label>
+                </span>
+                <span>
+                    <input type="checkbox" id="MainForm--number" name="number" checked={passwordOptions.number}/>
+                    <label htmlFor="MainForm--number">Include Numbers</label>
                 </span>
             </section>
         </section>
