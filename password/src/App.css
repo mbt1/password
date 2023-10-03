@@ -70,8 +70,10 @@
   border-radius: 4px;
   padding: 12px;
   font-size: 1em;
+  min-height:40px;
   width: 100%;
   max-width: 100%;
+  resize: vertical; 
   margin-bottom: 20px;
 }
 
