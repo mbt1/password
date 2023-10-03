@@ -1,0 +1,10 @@
+{
+    "id": "TypeScript",
+    "version": "1.0.0",
+    "name": "TypeScript",
+    "description": "Installs TypeScript along with needed dependencies.",
+    "options": {
+        },
+    "installsAfter": [
+    ]
+}
