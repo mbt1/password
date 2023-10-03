@@ -34,12 +34,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      sourcePath: ${{ github.workspace }}/password/
+      sourcePath: ${{ github.workspace }}/password
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: CopySource
-        run: cp ${{ env.sourcePath }}/*/* ${{ github.workspace }}
+        run: cp ${{ env.sourcePath }}/{.,}* ${{ github.workspace }}
       - name: Detect package manager
         id: detect-package-manager
         run: |
