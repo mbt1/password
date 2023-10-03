@@ -34,18 +34,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      sourcePath: ./password/
+      sourcePath: ${{ GITHUB_WORKSPACE }}/password/
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: CopySource
+        run: cp ${{ env.sourcePath }}/*/* ${{ GITHUB_WORKSPACE }}
       - name: Detect package manager
         id: detect-package-manager
         run: |
-          if [ -f "${{ env.sourcePath }}/yarn.lock" ]; then
+          if [ -f "${{ GITHUB_WORKSPACE }}/yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
             exit 0
-          elif [ -f "${{ env.sourcePath }}/package.json" ]; then
+          elif [ -f "${{ GITHUB_WORKSPACE }}/package.json" ]; then
             echo "manager=npm" >> $GITHUB_OUTPUT
             echo "command=ci" >> $GITHUB_OUTPUT
             exit 0
@@ -70,7 +72,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            ${{ env.sourcePath }}/public
+            ./public
             .cache
           key: ${{ runner.os }}-gatsby-build-${{ hashFiles('public') }}
           restore-keys: |
@@ -78,14 +80,13 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build
-        working-directory: ${{ env.sourcePath }}
         env:
           PREFIX_PATHS: 'true'
         run: ${{ steps.detect-package-manager.outputs.manager }} run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ${{ env.sourcePath }}/public
+          path: ./public
 
   # Deployment job
   deploy:
