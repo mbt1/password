@@ -47,38 +47,53 @@
 
 /* MainForm */
 
-.MainForm{
-  margin: 0px auto;
-  padding: 10px;
-  padding-top: 30px;
-  max-width: 900px;
-  height: 100%;
-  background-color: #DDDDDD;
-  font-size: 1.5em;
+.MainForm {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-size: 1em;
   display: grid;
   grid-template-columns: 1fr;
 }
-.MainForm--Options{
+
+.MainForm--Options {
   text-align: left;
+  width: 100%;
 }
 
-.MainForm span{
+.MainForm textarea {
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 1em;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.MainForm span {
   margin: 10px 0;
-  border: 1px dotted magenta;
   display: grid;
   grid-template-columns: 1fr 4fr;
   gap: 10px;
-  align-content: flex-end;
+  align-items: center;
 }
-/* .MainForm span :nth-child(1){ */
-.MainForm span *{
-    background-color: brown;
+
+.MainForm span label {
+  font-weight: bold;
 }
-#MainForm--Length{
-  width:100px;
-  text-align: center;
+
+.MainForm span input[type="text"],
+.MainForm span select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-#MainForm--PasswordOutput{
-  width:99%;
-  margin: 0 auto;
+
+.MainForm span input[type="checkbox"] {
+  margin-right: 10px;
 }
