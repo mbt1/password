@@ -9,9 +9,9 @@
 	"features": {
 		// "ghcr.io/devcontainers/features/ruby:1": {},
 		"./React":{},
-		"./gatsby":{},
 		"./TypeScript":{},
-		"./SASS":{}
+		"./SASS":{},
+		"./Serve":{}
 	},
 	
 	// Configure tool-specific properties.
@@ -20,7 +20,7 @@
 		"vscode": {
 			"settings": {},
 			"extensions": [
-				
+				"github.vscode-github-actions"
 			]
 		}
 	},

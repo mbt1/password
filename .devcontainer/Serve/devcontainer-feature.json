@@ -1,0 +1,10 @@
+{
+    "id": "Serve",
+    "version": "1.0.0",
+    "name": "Serve",
+    "description": "Installs Serve along with needed dependencies.",
+    "options": {
+        },
+    "installsAfter": [
+    ]
+}
