@@ -1,8 +1,8 @@
 {
-    "id": "gatsby",
+    "id": "SAAS",
     "version": "1.0.0",
-    "name": "Gatsby",
-    "description": "Installs gatsby along with needed dependencies.",
+    "name": "SAAS",
+    "description": "Installs SAAS along with needed dependencies.",
     "options": {
         },
     "installsAfter": [
